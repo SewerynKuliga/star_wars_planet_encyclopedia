@@ -3,10 +3,12 @@ import styled from "styled-components";
 import arrowOpen from "../../SVGs/arrowOpen.svg";
 import arrowClose from "../../SVGs/arrowClose.svg";
 import CollapsibleData from "../CollapsibleData";
+import MobileCollapibleData from "../MobileCollapibleData";
 
 function Films({ title, planets }) {
   const [visible, setVisible] = useState(false);
   const collData = <CollapsibleData planets={planets} />;
+  const mobileCollData = <MobileCollapibleData planets={planets} />;
   return (
     <Body>
       <Title onClick={() => setVisible(!visible)}>
@@ -17,7 +19,7 @@ function Films({ title, planets }) {
           <img src={arrowOpen} alt="" />
         )}
       </Title>
-      {visible ? collData : null}
+      {visible ? <div>{collData} {mobileCollData}</div> : null}
     </Body>
   );
 }
@@ -29,16 +31,20 @@ const Body = styled.div`
   background-color: #fff;
   border-radius: 0.4rem;
   margin: 2rem;
-
-  span {
-    color: rgb(0, 104, 127);
-    font-family: "Barlow", sans-serif;
-    font-weight: bold;
+  min-width: 220px;
+  @media screen and (max-width: 47rem) {
+    margin: 0;
+    margin-top: 2rem;
   }
+  
 `;
 
 const Title = styled.div`
   padding: 2rem;
   display: flex;
   justify-content: space-between;
+  span {
+    color: rgb(0, 104, 127);
+    font-weight: bold;
+  }
 `;

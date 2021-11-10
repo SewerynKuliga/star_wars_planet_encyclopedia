@@ -1,58 +1,145 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 export default function BasicTable({ planets }) {
-    const [currentSort, setCurrentSort] = useState(null)
-    const sortTypes = {
-        up: {
-            class: 'sort-up',
-            fn: (a, b) => a.net_worth - b.net_worth
-        },
-        down: {
-            class: 'sort-down',
-            fn: (a, b) => b.net_worth - a.net_worth
-        },
-        default: {
-            class: 'sort',
-            fn: (a, b) => a
-        }
-    }
+  const [sortName, setSortName] = useState("asc");
+  const [sortedRotationPeriod, setSortrotationPeriod] = useState("asc");
+  const [sortedOrbitelPeriod, setSortedOrbitalPeriod] = useState("asc");
+  const [sortDiameter, setSortDiameter] = useState("asc");
+  const [sortClimates, setSortClimates] = useState("asc");
+  const [sortSurfaceWater, setSortSurfaceWater] = useState("asc");
+  const [sortPopulation, setSortPopulation] = useState("asc");
 
-    const onSortChange = () => {
-		let nextSort;
-		
-		if(currentSort === 'down') nextSort = 'up';
-		else if(currentSort === 'up') nextSort = 'default';
-		else if(currentSort === 'default') nextSort = 'down';
-		
-		setCurrentSort(nextSort)
-	}
+  useEffect(() => {
+    planets.sort((a, b) => {
+      const isReversed = sortName === "asc" ? 1 : -1;
+      return isReversed * a.name.localeCompare(b.name);
+    });
+  }, [planets, sortName]);
+
+  useEffect(() => {
+    planets.sort((a, b) => {
+      if (sortedRotationPeriod === "asc") {
+        return b.rotationPeriod - a.rotationPeriod;
+      } else {
+        return a.rotationPeriod - b.rotationPeriod;
+      }
+    });
+  }, [planets, sortedRotationPeriod]);
+
+  useEffect(() => {
+    planets.sort((a, b) => {
+      if (sortedOrbitelPeriod === "asc") {
+        return b.orbitalPeriod - a.orbitalPeriod;
+      } else {
+        return a.orbitalPeriod - b.orbitalPeriod;
+      }
+    });
+  }, [planets, sortedOrbitelPeriod]);
+
+  useEffect(() => {
+    planets.sort((a, b) => {
+      if (sortDiameter === "asc") {
+        return b.diameter - a.diameter;
+      } else {
+        return a.diameter - b.diameter;
+      }
+    });
+  }, [planets, sortDiameter]);
+
+  useEffect(() => {
+    planets.sort((a, b) => {
+      const isReversed = sortClimates === "asc" ? 1 : -1;
+      return isReversed * a.climates[0].localeCompare(b.climates[0]);
+    });
+  }, [planets, sortClimates]);
+
+  useEffect(() => {
+    planets.sort((a, b) => {
+      if (sortSurfaceWater === "asc") {
+        return b.surfaceWater - a.surfaceWater;
+      } else {
+        return a.surfaceWater - b.surfaceWater;
+      }
+    });
+  }, [planets, sortSurfaceWater]);
+
+  useEffect(() => {
+    planets.sort((a, b) => {
+      if (sortPopulation === "asc") {
+        return b.population - a.population;
+      } else {
+        return a.population - b.population;
+      }
+    });
+  }, [planets, sortPopulation]);
 
   return (
     <Body>
       <Table>
         <HeaderRow>
           <tr>
-            <th>Planet Name </th>
-            <th>
+            <th
+              style={{ color: "rgb(0, 104, 127)" }}
+              onClick={() => {
+                setSortName(sortName === "desc" ? "asc" : "desc");
+              }}
+            >
+              Planet Name{" "}
+            </th>
+            <th
+              onClick={() => {
+                setSortrotationPeriod(
+                  sortedRotationPeriod === "asc" ? "dsc" : "asc"
+                );
+              }}
+            >
               Rorarion <br /> period
             </th>
-            <th>
+            <th
+              onClick={() => {
+                setSortedOrbitalPeriod(
+                  sortedOrbitelPeriod === "asc" ? "dsc" : "asc"
+                );
+              }}
+            >
               Orbital <br /> period
             </th>
-            <th>Diameter</th>
-            <th>Climate</th>
-            <th>
+            <th
+              onClick={() => {
+                setSortDiameter(sortDiameter === "asc" ? "dsc" : "asc");
+              }}
+            >
+              Diameter
+            </th>
+            <th
+              onClick={() => {
+                setSortClimates(sortClimates === "asc" ? "dsc" : "asc");
+              }}
+            >
+              Climate
+            </th>
+            <th
+              onClick={() => {
+                setSortSurfaceWater(sortSurfaceWater === "asc" ? "dsc" : "asc");
+              }}
+            >
               Surface <br /> water
             </th>
-            <th>Population</th>
+            <th
+              onClick={() => {
+                setSortPopulation(sortPopulation === "asc" ? "dsc" : "asc");
+              }}
+            >
+              Population
+            </th>
           </tr>
         </HeaderRow>
         {planets &&
           planets.map((planet) => (
             <DataRow key={planet.name}>
               <tr>
-                <td>{planet.name}</td>
+                <td style={{ color: "rgb(0, 104, 127)" }}>{planet.name}</td>
                 <td>{planet.rotationPeriod}</td>
                 <td>{planet.orbitalPeriod}</td>
                 <td>{planet.diameter}</td>
@@ -73,11 +160,20 @@ const Body = styled.div`
   padding: 2rem;
   border-radius: 0 0 0.4rem 0.4rem;
   background-color: rgba(0, 0, 0, 0.05);
+  min-width: 47rem;
+  @media screen and (max-width: 47rem) {
+    display: none;
+  }
 `;
 
 const Table = styled.table`
   font-size: 1.5rem;
   width: 100%;
+
+  span {
+    color: rgb(0, 104, 127);
+    font-weight: bold;
+  }
 `;
 
 const DataRow = styled.tbody`
@@ -86,8 +182,12 @@ const DataRow = styled.tbody`
   }
 
   td {
-    padding: 0.5rem 0;
+    padding: 0.5rem;
     text-align: right;
+    vertical-align: middle;
+  }
+  &:nth-child(2n) {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -99,6 +199,7 @@ const HeaderRow = styled.thead`
     padding: 1rem 0;
     text-align: right;
     vertical-align: middle;
+    cursor: pointer;
 
     *:first-child {
       text-align: left;

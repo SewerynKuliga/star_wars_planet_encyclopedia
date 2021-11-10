@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import styled from "styled-components";
 import LOGO from "./SVGs/LOGO.svg";
-import Films from "./Components/Films/Films";
+import Films from "./Components/Films/Titles";
 
 function App() {
   const [films, setFilms] = useState(null);
@@ -15,7 +15,7 @@ function App() {
       .then((data) => {
         setFilms(data.films);
         setPlanets(data.planets);
-        console.log(data);
+        // console.log(data);
       });
   }, []);
 
@@ -34,6 +34,7 @@ export default App;
 
 const Body = styled.div`
   width: 80%;
+  min-width: 25rem;
   height: auto;
   background-color: rgb(224, 230, 238);
   margin: 0 auto;
@@ -45,4 +46,6 @@ const Body = styled.div`
 const Img = styled.img`
   display: block;
   margin: 0 auto;
+  width: 100%;
+  max-width: 60rem;
 `;
