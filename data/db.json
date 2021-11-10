@@ -82,7 +82,7 @@
           "rotationPeriod": 24,
           "orbitalPeriod": 4818,
           "diameter": 10200,
-          "climates": ["temperate", "tropical"],
+          "climates": ["temperate, ", "tropical"],
           "surfaceWater": 8,
           "population": 1000,
           "filmConnection": {
@@ -242,7 +242,7 @@
           "rotationPeriod": 30,
           "orbitalPeriod": 256,
           "diameter": 11370,
-          "climates": ["temperate", "arid"],
+          "climates": ["temperate, ", "arid"],
           "surfaceWater": 5,
           "population": 100000000000,
           "filmConnection": {
@@ -259,7 +259,7 @@
           "rotationPeriod": 27,
           "orbitalPeriod": 351,
           "diameter": 12900,
-          "climates": ["temperate", "arid", "windy"],
+          "climates": ["temperate, ", "arid, ", "windy"],
           "surfaceWater": 0.9,
           "population": 95000000,
           "filmConnection": {
@@ -344,7 +344,7 @@
           "rotationPeriod": 34,
           "orbitalPeriod": 231,
           "diameter": 9100,
-          "climates": ["hot", "humid"],
+          "climates": ["hot, ", "humid"],
           "surfaceWater": null,
           "population": 8500000,
           "filmConnection": {
@@ -361,7 +361,7 @@
           "rotationPeriod": 25,
           "orbitalPeriod": 278,
           "diameter": 0,
-          "climates": ["temperate", "moist"],
+          "climates": ["temperate, ", "moist"],
           "surfaceWater": null,
           "population": 10000000,
           "filmConnection": {
@@ -594,7 +594,7 @@
           "rotationPeriod": 26,
           "orbitalPeriod": 201,
           "diameter": 18880,
-          "climates": ["arid", "temperate", "tropical"],
+          "climates": ["arid, ", "temperate, ", "tropical"],
           "surfaceWater": null,
           "population": 2000000000,
           "filmConnection": {
@@ -620,7 +620,7 @@
           "rotationPeriod": 30,
           "orbitalPeriod": 305,
           "diameter": 10600,
-          "climates": ["temperate", "arid", "subartic"],
+          "climates": ["temperate, ", "arid, ", "subartic"],
           "surfaceWater": 5,
           "population": 1500000000,
           "filmConnection": {
@@ -646,7 +646,7 @@
           "rotationPeriod": 22,
           "orbitalPeriod": 391,
           "diameter": 14900,
-          "climates": ["temperate", "artic"],
+          "climates": ["temperate, ", "artic"],
           "surfaceWater": null,
           "population": 421000000,
           "filmConnection": {
@@ -711,7 +711,7 @@
           "rotationPeriod": 33,
           "orbitalPeriod": 206,
           "diameter": 15600,
-          "climates": ["tropical", "temperate"],
+          "climates": ["tropical, ", "temperate"],
           "surfaceWater": 80,
           "population": 500000000,
           "filmConnection": {
@@ -750,7 +750,7 @@
           "rotationPeriod": 22,
           "orbitalPeriod": 481,
           "diameter": null,
-          "climates": ["arid", "rocky", "windy"],
+          "climates": ["arid, ", "rocky, ", "windy"],
           "surfaceWater": null,
           "population": null,
           "filmConnection": {
@@ -906,7 +906,7 @@
           "rotationPeriod": 23,
           "orbitalPeriod": 378,
           "diameter": 13850,
-          "climates": ["arid", "temperate", "tropical"],
+          "climates": ["arid, ", "temperate, ", "tropical"],
           "surfaceWater": null,
           "population": 4000000000,
           "filmConnection": {
