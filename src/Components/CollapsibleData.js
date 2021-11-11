@@ -18,33 +18,25 @@ export default function BasicTable({ planets }) {
   }, [planets, sortName]);
 
   useEffect(() => {
-    planets.sort((a, b) => {
-      if (sortedRotationPeriod === "asc") {
-        return b.rotationPeriod - a.rotationPeriod;
-      } else {
-        return a.rotationPeriod - b.rotationPeriod;
-      }
-    });
+    planets.sort((a, b) =>
+      sortedRotationPeriod === "asc"
+        ? b.rotationPeriod - a.rotationPeriod
+        : a.rotationPeriod - b.rotationPeriod
+    );
   }, [planets, sortedRotationPeriod]);
 
   useEffect(() => {
-    planets.sort((a, b) => {
-      if (sortedOrbitelPeriod === "asc") {
-        return b.orbitalPeriod - a.orbitalPeriod;
-      } else {
-        return a.orbitalPeriod - b.orbitalPeriod;
-      }
-    });
+    planets.sort((a, b) =>
+      sortedOrbitelPeriod === "asc"
+        ? b.orbitalPeriod - a.orbitalPeriod
+        : a.orbitalPeriod - b.orbitalPeriod
+    );
   }, [planets, sortedOrbitelPeriod]);
 
   useEffect(() => {
-    planets.sort((a, b) => {
-      if (sortDiameter === "asc") {
-        return b.diameter - a.diameter;
-      } else {
-        return a.diameter - b.diameter;
-      }
-    });
+    planets.sort((a, b) =>
+      sortDiameter === "asc" ? b.diameter - a.diameter : a.diameter - b.diameter
+    );
   }, [planets, sortDiameter]);
 
   useEffect(() => {
@@ -55,23 +47,19 @@ export default function BasicTable({ planets }) {
   }, [planets, sortClimates]);
 
   useEffect(() => {
-    planets.sort((a, b) => {
-      if (sortSurfaceWater === "asc") {
-        return b.surfaceWater - a.surfaceWater;
-      } else {
-        return a.surfaceWater - b.surfaceWater;
-      }
-    });
+    planets.sort((a, b) =>
+      sortSurfaceWater === "asc"
+        ? b.surfaceWater - a.surfaceWater
+        : a.surfaceWater - b.surfaceWater
+    );
   }, [planets, sortSurfaceWater]);
 
   useEffect(() => {
-    planets.sort((a, b) => {
-      if (sortPopulation === "asc") {
-        return b.population - a.population;
-      } else {
-        return a.population - b.population;
-      }
-    });
+    planets.sort((a, b) =>
+      sortPopulation === "asc"
+        ? b.population - a.population
+        : a.population - b.population
+    );
   }, [planets, sortPopulation]);
 
   return (
@@ -82,7 +70,7 @@ export default function BasicTable({ planets }) {
             <th
               style={{ color: "rgb(0, 104, 127)" }}
               onClick={() => {
-                setSortName(sortName === "desc" ? "asc" : "desc");
+                setSortName(sortName === "asc" ? "dsc" : "asc");
               }}
             >
               Planet Name{" "}
