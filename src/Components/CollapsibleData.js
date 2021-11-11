@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 export default function BasicTable({ planets }) {
   const [sortName, setSortName] = useState("asc");
-  const [sortedRotationPeriod, setSortrotationPeriod] = useState("asc");
-  const [sortedOrbitelPeriod, setSortedOrbitalPeriod] = useState("asc");
+  const [sortRotationPeriod, setSortRotationPeriod] = useState("asc");
+  const [sortOrbitelPeriod, setSortOrbitalPeriod] = useState("asc");
   const [sortDiameter, setSortDiameter] = useState("asc");
   const [sortClimates, setSortClimates] = useState("asc");
   const [sortSurfaceWater, setSortSurfaceWater] = useState("asc");
@@ -19,19 +19,19 @@ export default function BasicTable({ planets }) {
 
   useEffect(() => {
     planets.sort((a, b) =>
-      sortedRotationPeriod === "asc"
+      sortRotationPeriod === "asc"
         ? b.rotationPeriod - a.rotationPeriod
         : a.rotationPeriod - b.rotationPeriod
     );
-  }, [planets, sortedRotationPeriod]);
+  }, [planets, sortRotationPeriod]);
 
   useEffect(() => {
     planets.sort((a, b) =>
-      sortedOrbitelPeriod === "asc"
+      sortOrbitelPeriod === "asc"
         ? b.orbitalPeriod - a.orbitalPeriod
         : a.orbitalPeriod - b.orbitalPeriod
     );
-  }, [planets, sortedOrbitelPeriod]);
+  }, [planets, sortOrbitelPeriod]);
 
   useEffect(() => {
     planets.sort((a, b) =>
@@ -77,8 +77,8 @@ export default function BasicTable({ planets }) {
             </th>
             <th
               onClick={() => {
-                setSortrotationPeriod(
-                  sortedRotationPeriod === "asc" ? "dsc" : "asc"
+                setSortRotationPeriod(
+                  sortRotationPeriod === "asc" ? "dsc" : "asc"
                 );
               }}
             >
@@ -86,8 +86,8 @@ export default function BasicTable({ planets }) {
             </th>
             <th
               onClick={() => {
-                setSortedOrbitalPeriod(
-                  sortedOrbitelPeriod === "asc" ? "dsc" : "asc"
+                setSortOrbitalPeriod(
+                  sortOrbitelPeriod === "asc" ? "dsc" : "asc"
                 );
               }}
             >

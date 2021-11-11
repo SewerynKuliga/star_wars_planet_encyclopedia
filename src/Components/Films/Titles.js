@@ -5,7 +5,7 @@ import arrowClose from "../../SVGs/arrowClose.svg";
 import CollapsibleData from "../CollapsibleData";
 import MobileCollapibleData from "../MobileCollapibleData";
 
-function Films({ title, planets }) {
+function Titles({ title, planets }) {
   const [visible, setVisible] = useState(false);
   const collData = <CollapsibleData planets={planets} />;
   const mobileCollData = <MobileCollapibleData planets={planets} />;
@@ -14,17 +14,21 @@ function Films({ title, planets }) {
       <Title onClick={() => setVisible(!visible)}>
         <span>{title}</span>
         {visible ? (
-          <img src={arrowClose} alt="" />
+          <img src={arrowClose} alt="close arrow" />
         ) : (
-          <img src={arrowOpen} alt="" />
+          <img src={arrowOpen} alt="open arrow" />
         )}
       </Title>
-      {visible ? <div>{collData} {mobileCollData}</div> : null}
+      {visible ? (
+        <div>
+          {collData} {mobileCollData}
+        </div>
+      ) : null}
     </Body>
   );
 }
 
-export default Films;
+export default Titles;
 
 const Body = styled.div`
   font-size: 2rem;
@@ -36,7 +40,6 @@ const Body = styled.div`
     margin: 0;
     margin-top: 2rem;
   }
-  
 `;
 
 const Title = styled.div`
