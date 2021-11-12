@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-export default function BasicTable({ planets }) {
+export default function BasicTable({ planets, films }) {
   const [sortName, setSortName] = useState("asc");
   const [sortRotationPeriod, setSortRotationPeriod] = useState("asc");
   const [sortOrbitelPeriod, setSortOrbitalPeriod] = useState("asc");
@@ -62,6 +62,7 @@ export default function BasicTable({ planets }) {
     );
   }, [planets, sortPopulation]);
 
+  console.log(films);
   return (
     <Body>
       <Table>
@@ -121,22 +122,23 @@ export default function BasicTable({ planets }) {
             >
               Population
             </th>
+            <th>asd</th>
           </tr>
         </HeaderRow>
-        {planets &&
-          planets.map((planet) => (
-            <DataRow key={planet.name}>
-              <tr>
-                <td style={{ color: "rgb(0, 104, 127)" }}>{planet.name}</td>
-                <td>{planet.rotationPeriod}</td>
-                <td>{planet.orbitalPeriod}</td>
-                <td>{planet.diameter}</td>
-                <td>{planet.climates}</td>
-                <td>{planet.surfaceWater}</td>
-                <td>{planet.population}</td>
-              </tr>
-            </DataRow>
-          ))}
+        {planets.map((planet) => (
+          <DataRow key={planet.name}>
+            <tr>
+              <td style={{ color: "rgb(0, 104, 127)" }}>{planet.name}</td>
+              <td>{planet.rotationPeriod}</td>
+              <td>{planet.orbitalPeriod}</td>
+              <td>{planet.diameter}</td>
+              <td>{planet.climates}</td>
+              <td>{planet.surfaceWater}</td>
+              <td>{planet.population}</td>
+              <td>{planet.d}</td>
+            </tr>
+          </DataRow>
+        ))}
       </Table>
     </Body>
   );

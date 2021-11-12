@@ -5,10 +5,10 @@ import arrowClose from "../../SVGs/arrowClose.svg";
 import CollapsibleData from "../CollapsibleData";
 import MobileCollapibleData from "../MobileCollapibleData";
 
-function Titles({ title, planets }) {
+function Titles({ title, planets, films }) {
   const [visible, setVisible] = useState(false);
-  const collData = <CollapsibleData planets={planets} />;
-  const mobileCollData = <MobileCollapibleData planets={planets} />;
+  const collData = <CollapsibleData planets={planets} films={films}/>;
+  const mobileCollData = <MobileCollapibleData planets={planets} films={films}/>;
   return (
     <Body>
       <Title onClick={() => setVisible(!visible)}>

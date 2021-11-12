@@ -8,14 +8,17 @@ function App() {
   const [films, setFilms] = useState(null);
   const [planets, setPlanets] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:5000/data")
+    fetch("http://localhost:5000/data",
+    {
+      method: "GET"
+    })
       .then((res) => {
         return res.json();
       })
       .then((data) => {
         setFilms(data.films);
         setPlanets(data.planets);
-        // console.log(data);
+        console.log(data);
       });
   }, []);
 
@@ -24,7 +27,7 @@ function App() {
       <Img src={LOGO} alt="logo" />
 
       {films && films.map((film) => (
-        <Titles title={film.title} key={film.id} planets={planets} />
+        <Titles title={film.title} key={film.id} planets={planets} films={films}/>
       ))}
     </Body>
   );
