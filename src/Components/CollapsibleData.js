@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-export default function BasicTable({ planets, films }) {
+export default function BasicTable({ planets, id }) {
   const [sortName, setSortName] = useState("asc");
   const [sortRotationPeriod, setSortRotationPeriod] = useState("asc");
   const [sortOrbitelPeriod, setSortOrbitalPeriod] = useState("asc");
@@ -62,7 +62,6 @@ export default function BasicTable({ planets, films }) {
     );
   }, [planets, sortPopulation]);
 
-  console.log(films);
   return (
     <Body>
       <Table>
@@ -122,27 +121,30 @@ export default function BasicTable({ planets, films }) {
             >
               Population
             </th>
-            <th>asd</th>
           </tr>
         </HeaderRow>
-        {planets.map((planet) => (
-          <DataRow key={planet.name}>
-            <tr>
-              <td style={{ color: "rgb(0, 104, 127)" }}>{planet.name}</td>
-              <td>{planet.rotationPeriod}</td>
-              <td>{planet.orbitalPeriod}</td>
-              <td>{planet.diameter}</td>
-              <td>{planet.climates}</td>
-              <td>{planet.surfaceWater}</td>
-              <td>{planet.population}</td>
-              <td>{planet.d}</td>
-            </tr>
-          </DataRow>
-        ))}
+        {planets
+          .filter((tmpPlanet) =>
+            tmpPlanet.filmConnection.films.find(film => film.id === id)
+          )
+          .map((planet) => (
+            <DataRow key={planet.name}>
+              <tr>
+                <td style={{ color: "rgb(0, 104, 127)" }}>{planet.name}</td>
+                <td>{planet.rotationPeriod}</td>
+                <td>{planet.orbitalPeriod}</td>
+                <td>{planet.diameter}</td>
+                <td>{planet.climates}</td>
+                <td>{planet.surfaceWater}</td>
+                <td>{planet.population}</td>
+              </tr>
+            </DataRow>
+          ))}
       </Table>
     </Body>
   );
 }
+
 
 const Body = styled.div`
   width: initial;

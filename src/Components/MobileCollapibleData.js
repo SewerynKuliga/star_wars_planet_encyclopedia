@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-function MobileCollapibleData({ planets }) {
+function MobileCollapibleData({ planets, id }) {
   return (
     <Body>
-      {planets &&
-        planets.map((planet) => (
+      {planets
+        .filter((tmpPlanet) =>
+          tmpPlanet.filmConnection.films.find((film) => film.id === id)
+        )
+        .map((planet) => (
           <Table2 key={planet.name}>
             <Table3>
               <p>Planet Name</p> <span>{planet.name}</span>

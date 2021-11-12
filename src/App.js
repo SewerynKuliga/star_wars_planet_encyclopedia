@@ -27,7 +27,7 @@ function App() {
       <Img src={LOGO} alt="logo" />
 
       {films && films.map((film) => (
-        <Titles title={film.title} key={film.id} planets={planets} films={films}/>
+        <Titles title={film.title} key={film.id} id={film.id} planets={planets} />
       ))}
     </Body>
   );
