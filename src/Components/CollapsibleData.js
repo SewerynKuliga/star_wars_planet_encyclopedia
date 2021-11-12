@@ -9,7 +9,6 @@ export default function BasicTable({ planets, id }) {
   const [sortClimates, setSortClimates] = useState("asc");
   const [sortSurfaceWater, setSortSurfaceWater] = useState("asc");
   const [sortPopulation, setSortPopulation] = useState("asc");
-
   useEffect(() => {
     planets.sort((a, b) => {
       const isReversed = sortName === "asc" ? 1 : -1;
