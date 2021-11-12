@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import arrowOpen from "../../SVGs/arrowOpen.svg";
 import arrowClose from "../../SVGs/arrowClose.svg";
-import CollapsibleData from "../CollapsibleData";
-import MobileCollapibleData from "../MobileCollapibleData";
+import CollapsibleData from "../CollapsibleData/CollapsibleData";
+import MobileCollapibleData from "../CollapsibleData/MobileCollapibleData";
 
-function Titles({ title, planets, films, id }) {
+function FilmList({ title, planets, films, id }) {
   const [visible, setVisible] = useState(false);
   const collData = <CollapsibleData planets={planets} films={films} id={id}/>;
   const mobileCollData = <MobileCollapibleData planets={planets} films={films} id={id}/>;
@@ -28,7 +28,7 @@ function Titles({ title, planets, films, id }) {
   );
 }
 
-export default Titles;
+export default FilmList;
 
 const Body = styled.div`
   font-size: 2rem;

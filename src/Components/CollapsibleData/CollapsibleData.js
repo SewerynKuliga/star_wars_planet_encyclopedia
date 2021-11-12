@@ -173,7 +173,7 @@ const DataRow = styled.tbody`
   }
 
   td {
-    padding: 0.5rem;
+    padding: 1rem 0.5rem;
     text-align: right;
     vertical-align: middle;
   }

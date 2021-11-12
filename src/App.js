@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import styled from "styled-components";
 import LOGO from "./SVGs/LOGO.svg";
-import Titles from "./Components/Films/Titles";
+import FilmList from "./Components/Films/FilmList";
 
 function App() {
   const [films, setFilms] = useState(null);
   const [planets, setPlanets] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:5000/data",
-    {
-      method: "GET"
+    fetch("http://localhost:5000/data", {
+      method: "GET",
     })
       .then((res) => {
         return res.json();
@@ -26,9 +25,15 @@ function App() {
     <Body>
       <Img src={LOGO} alt="logo" />
 
-      {films && films.map((film) => (
-        <Titles title={film.title} key={film.id} id={film.id} planets={planets} />
-      ))}
+      {films &&
+        films.map((film) => (
+          <FilmList
+            title={film.title}
+            key={film.id}
+            id={film.id}
+            planets={planets}
+          />
+        ))}
     </Body>
   );
 }
@@ -38,6 +43,7 @@ export default App;
 const Body = styled.div`
   width: 80%;
   min-width: 25rem;
+  max-width: 150rem;
   height: auto;
   background-color: rgb(224, 230, 238);
   margin: 0 auto;
