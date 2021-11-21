@@ -17,7 +17,6 @@ function App() {
       .then((data) => {
         setFilms(data.films);
         setPlanets(data.planets);
-        console.log(data);
       });
   }, []);
 

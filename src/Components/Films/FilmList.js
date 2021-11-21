@@ -3,12 +3,9 @@ import styled from "styled-components";
 import arrowOpen from "../../SVGs/arrowOpen.svg";
 import arrowClose from "../../SVGs/arrowClose.svg";
 import CollapsibleData from "../CollapsibleData/CollapsibleData";
-import MobileCollapibleData from "../CollapsibleData/MobileCollapibleData";
 
 function FilmList({ title, planets, films, id }) {
   const [visible, setVisible] = useState(false);
-  const collData = <CollapsibleData planets={planets} films={films} id={id}/>;
-  const mobileCollData = <MobileCollapibleData planets={planets} films={films} id={id}/>;
   return (
     <Body>
       <Title onClick={() => setVisible(!visible)}>
@@ -20,9 +17,7 @@ function FilmList({ title, planets, films, id }) {
         )}
       </Title>
       {visible ? (
-        <div>
-          {collData} {mobileCollData}
-        </div>
+        <CollapsibleData planets={planets} films={films} id={id} />
       ) : null}
     </Body>
   );
